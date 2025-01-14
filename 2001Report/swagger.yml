@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: "Trail REST API"
+  description: "An API for managing trails and related entities in a Trail Application"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+components:
+  schemas:
+    User:
+      type: "object"
+      required:
+        - EmailAddress
+        - Role
+      properties:
+        EmailAddress:
+          type: "string"
+          format: "email"
+        Role:
+          type: "string"
+    TrailLocation:
+      type: "object"
+      required:
+        - Latitude
+        - Longitude
+        - PointOrder
+      properties:
+        Latitude:
+          type: "number"
+          format: "float"
+        Longitude:
+          type: "number"
+          format: "float"
+        Description:
+          type: "string"
+          description: "description of the point"
+        PointOrder:
+          type: "integer"
+          description: "The order of the point in the trail"
+
+    Feature:
+      type: "object"
+      required:
+        - Feature_name
+      properties:
+        Feature_name:
+          type: "string"
+
+
+    Trail:
+      type: "object"
+      required:
+        - OwnerID
+      properties:
+        TrailID:
+          type: "integer"
+          readOnly: true
+        TrailName:
+          type: "string"
+        TrailSummary:
+          type: "string"
+        TrailDescription:
+          type: "string"
+        Difficulty:
+          type: "string"
+        Location:
+          type: "string"
+        Length:
+          type: "number"
+          format: float
+        ElevationGain:
+          type: "number"
+          format: float
+        RouteType:
+          type: "string"
+        OwnerID:
+          type: "integer"
+          description: "ID of the user creating the trail"
+        TrailLocation:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TrailLocation"
+        Feature:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Feature"
+
+
+
+  parameters:
+    TrailID:
+      name: "TrailID"
+      description: "id of the trail to retrieve or modify"
+      in: path
+      required: true
+      schema:
+        type: "string"
+
+    EmailAddress:
+      name: "EmailAddress"
+      description: "Email of the user to retrieve or modify"
+      in: path
+      required: true
+      schema:
+        type: "string"
+
+paths:
+  /trail:
+    get:
+      operationId: "trail.read_all"
+      tags:
+        - "Trail"
+      summary: "Retrieve a list of all trails"
+      responses:
+        "200":
+          description: "Successfully retrieved list of trails"
+
+    post:
+      operationId: "trail.create"
+      tags:
+        - "Trail"
+      summary: "Create one or more trails (associated with admin only)"
+      requestBody:
+        description: "Array of trail objects to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Trail"
+      responses:
+        "201":
+          description: "Successfully created new trails"
+
+  /trail/{TrailID}:
+    get:
+      summary: Retrieve a trail by name
+      operationId: "trail.read_one"
+      parameters:
+        - $ref: "#/components/parameters/TrailID"
+      responses:
+        '200':
+          description: Successfully retrieved trail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trail'
+        '404':
+          description: Trail not found
+
+
+    put:
+      operationId: "trail.update"
+      tags:
+        - "Trail"
+      summary: "Update a specific trail by name"
+      parameters:
+        - $ref: "#/components/parameters/TrailID"
+      requestBody:
+        description: "Updated trail data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Trail"
+      responses:
+        "200":
+          description: "Successfully updated the trail"
+
+    delete:
+      operationId: "trail.delete"
+      tags:
+        - "Trail"
+      summary: "Delete a specific trail by name"
+      parameters:
+        - $ref: "#/components/parameters/TrailID"
+      responses:
+        "204":
+          description: "Successfully deleted the trail"
+
+  /user:
+    get:
+      operationId: "user.read_all_user"
+      tags:
+        - "User"
+      summary: "Retrieve a list of all users"
+      responses:
+        "200":
+          description: "Successfully retrieved user list"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/User"
+
+    post:
+      operationId: "user.create_user"
+      tags:
+        - "User"
+      summary: "Create a new user"
+      requestBody:
+        description: "User data to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+            example:
+              EmailAddress: "example@example.com"
+              Role: "admin"
+      responses:
+        "201":
+          description: "Successfully created a new user"
+
+  /user/{EmailAddress}:
+    get:
+      operationId: "user.read_one_user"
+      tags:
+        - "User"
+      summary: "Retrieve details of a specific user by email"
+      parameters:
+        - $ref: "#/components/parameters/EmailAddress"
+      responses:
+        "200":
+          description: "Successfully retrieved user details"
+
+    put:
+      operationId: "user.update_user"
+      tags:
+        - "User"
+      summary: "Update a specific user by email"
+      parameters:
+        - $ref: "#/components/parameters/EmailAddress"
+      requestBody:
+        description: "Updated user data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: "Successfully updated the user"
+
+    delete:
+      operationId: "user.delete_user"
+      tags:
+        - "User"
+      summary: "Delete a specific user by email"
+      parameters:
+        - $ref: "#/components/parameters/EmailAddress"
+      responses:
+        "204":
+          description: "Successfully deleted the user"

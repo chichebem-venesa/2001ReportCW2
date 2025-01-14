@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RP Flask REST API</title>
+</head>
+<body>
+    <h1>Welcome, Users!</h1>
+
+    <h2>Available Trails:</h2>
+
+    <ul>
+        {% for trail in trail %}
+            <li>
+                <strong>{{ trail.TrailName }}</strong> - {{ trail.TrailDescription }}
+                <br>
+                Location: {{ trail.Location }}
+                <br>
+                Length: {{ trail.Length }} km
+                <br>
+                Difficulty: {{ trail.Difficulty }}
+                <br>
+                Elevation Gain: {{ trail.ElevationGain }}m
+                <br>
+                Route Type: {{ trail.RouteType }}
+                <br>
+                Made by:
+                {% for user in users %}
+                    {% if user.UserID == trail.OwnerID %}
+                        {{ user.EmailAddress }}
+                    {% endif %}
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
