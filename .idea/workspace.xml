@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a4fba94-9a13-49eb-a9cb-2f447cb085ba" name="Changes" comment="Trail service" />
+    <list default="true" id="1a4fba94-9a13-49eb-a9cb-2f447cb085ba" name="Changes" comment="Trail service">
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/2001Report.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/authenticator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/database_connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/swagger.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/trail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2001Report/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +50,9 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../2001Report" />
+    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -100,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736844837958</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Trail service">
+      <option name="closed" value="true" />
+      <created>1736845154253</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736845154253</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
